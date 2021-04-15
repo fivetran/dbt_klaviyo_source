@@ -1,0 +1,47 @@
+# for source packages/pulling from the raw connector data
+
+version: 2
+
+sources:
+  - name: klaviyo 
+    database: "{{ var ('klaviyo_database', target.database) }}"
+    schema: "{{ var ('klaviyo_schema', 'klaviyo') }}"
+
+    loader: fivetran
+    loaded_at_field: _fivetran_synced
+      
+    freshness:
+      warn_after: {count: 72, period: hour}
+      error_after: {count: 96, period: hour}
+
+    tables:
+      - name: campaign
+        description: Table capturing email campaigns in Klaviyo.  
+        columns:
+          - name: _fivetran_deleted
+            description: Boolean that is true if the campaign has been soft-deleted. 
+          - name: campaign_type
+          - name: created
+            description: Timestamp of when the campaign was created, in UTC.
+          - name: email_template_id
+            description: >
+              Foreign key referencing the ID of the `email_template` object that will be the 
+              content of this campaign. Note the Email Template is copied when creating this campaign, 
+              so future changes to that Email Template will not alter the content of this campaign.
+          - name: from_email
+          - name: from_name
+          - name: id
+          - name: is_segmented
+          - name: name
+          - name: send_time
+          - name: sent_at
+          - name: status
+          - name: status_id
+          - name: status_label
+          - name: subject
+          - name: updated
+        
+      - name: event
+      - name: flow
+      - name: integration
+      - name: person
