@@ -11,8 +11,10 @@ vars:
     flow: "{{ source('klaviyo', 'flow') }}" 
     integration: "{{ source('klaviyo', 'integration') }}" 
     person: "{{ source('klaviyo', 'person') }}" 
-
+    metric: "{{ source('klaviyo', 'metric') }}" 
     klaviyo__event_pass_through_columns: []
 
 models: 
   materialized: table # for building the package, switch to views later? 
+
+profile: klaviyo

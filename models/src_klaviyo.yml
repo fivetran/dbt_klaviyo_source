@@ -45,3 +45,4 @@ sources:
       - name: flow
       - name: integration
       - name: person
+      - name: metric
