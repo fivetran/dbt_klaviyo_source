@@ -16,7 +16,8 @@ vars:
     klaviyo__person_pass_through_columns: []
 
 models: 
-  materialized: table # for building the package, switch to views later? 
-  tmp:
-    +materialized: view
+  klaviyo_source:
+    tmp:
+      +materialized: view
+    +materialized: table
 
