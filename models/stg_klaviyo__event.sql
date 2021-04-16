@@ -2,7 +2,8 @@
 with base as (
 
     select * 
-    from {{ ref('stg_klaviyo__event_tmp') }}
+    {# from {{ ref('stg_klaviyo__event_tmp') }} #}
+    from {{ var('event_table') }}
 
 ),
 
@@ -22,16 +23,17 @@ fields as (
 final as (
     
     select 
-        _variation as variation,
+        _variation as variation_id,
         campaign_id,
-        coalesce(datetime, timestamp) as occurred_at,
+        coalesce(timestamp, datetime) as occurred_at,
         flow_id,
         flow_message_id,
         id as event_id,
         metric_id,
         person_id,
         type,
-        uuid
+        uuid,
+        property_value as numeric_value
 
         {{ fivetran_utils.fill_pass_through_columns('klaviyo__event_pass_through_columns') }}
     
