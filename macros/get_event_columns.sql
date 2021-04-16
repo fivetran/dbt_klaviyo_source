@@ -13,7 +13,8 @@
     {"name": "person_id", "datatype": dbt_utils.type_string()},
     {"name": "timestamp", "datatype": dbt_utils.type_timestamp()},
     {"name": "type", "datatype": dbt_utils.type_string()},
-    {"name": "uuid", "datatype": dbt_utils.type_string()}
+    {"name": "uuid", "datatype": dbt_utils.type_string()},
+    {"name": "property_value", "datatype": dbt_utils.type_string()}
 ] %}
 
 {{ fivetran_utils.add_pass_through_columns(columns, var('klaviyo__event_pass_through_columns')) }}
