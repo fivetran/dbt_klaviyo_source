@@ -26,7 +26,12 @@ final as (
         id as flow_id,
         name as flow_name,
         status,
-        trigger,
+        {% if target.type == 'snowflake'%}
+        "TRIGGER" 
+        {% else %}
+        trigger
+        {% endif %}
+        as customer_trigger,
         updated as updated_at,
         customer_filter
 

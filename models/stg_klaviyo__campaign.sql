@@ -35,12 +35,11 @@ final as (
         coalesce(status, lower(status_label)) as status,
         status_id,
         subject,
-        updated as updated_at,
-        _fivetran_synced
+        updated as updated_at
 
     from fields
 
-    where not coalesce(_fivetran_synced, false)
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * from final

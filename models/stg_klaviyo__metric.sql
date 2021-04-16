@@ -24,10 +24,10 @@ final as (
     select 
         created as created_at,
         id as metric_id,
-        integration_id
-        name as metric_name
+        integration_id,
+        name as metric_name,
         updated as updated_at
-        
+
     from fields
 
     where not coalesce(_fivetran_deleted, false)

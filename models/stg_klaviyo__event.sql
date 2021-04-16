@@ -27,7 +27,7 @@ final as (
         coalesce(datetime, timestamp) as occurred_at,
         flow_id,
         flow_message_id,
-        id as event_id
+        id as event_id,
         metric_id,
         person_id,
         type,
