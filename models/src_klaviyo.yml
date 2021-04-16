@@ -57,11 +57,15 @@ sources:
             description: Timestamp of when the campaign was last updated.
         
       - name: event
-        description: Table of events (and metrics) triggered in Klaviyo or via its integrations.
+        description: >
+          Table of events (and metrics) triggered in Klaviyo or via its integrations.
+          Custom columns can be passed through to downstream models via the `klaviyo__event_pass_through_columns` variable 
+          (see README for details).
         columns:
           - name: _variation
             description: >
               Unique ID of the attributed flow or campaign variation group. 
+              This does not map onto another table. 
           - name: campaign_id
             description: Foreign key referencing the CAMPAIGN that the event is attributed to. 
           - name: datetime
@@ -71,7 +75,9 @@ sources:
           - name: flow_id
             description: Foreign key referencing the FLOW that the event is attributed to. 
           - name: flow_message_id
-            description: Unique ID of the FLOW_MESSAGE that the event is attributed to. 
+            description: >
+              Unique ID of the FLOW_MESSAGE that the event is attributed to. 
+              This does not map onto another table.
           - name: id
             description: Unique ID of the event. 
           - name: metric_id
@@ -102,7 +108,72 @@ sources:
             description: Timestamp of when the flow was last updated. 
           - name: customer_filter
             description: JSON of flow filters placed on the **person level** that will trigger this flow. 
-            
+
       - name: integration
+        description: Table storing third-party platforms integrated into Klaviyo.   
+        columns:
+          - name: category 
+            description: Use-case category of the integrated platform. 
+          - name: id 
+            description: Unique ID of the integration. 
+          - name: name
+            description: Name of the integrated platform. 
+
       - name: person
+        description: >
+          Table storing the profiles of all people/users interacted with. 
+          Custom columns can be passed through to downstream models via the `klaviyo__person_pass_through_columns` variable 
+          (see README for details).
+        columns:
+          - name: id
+            description: >
+              Unique ID of the user if you use your own unique identifier. Otherwise, Klaviyo 
+              recommends using the email as the primary key. 
+          - name: address_1
+            description: First line of the person's address.
+          - name: address_2
+            description: Second line of the person's address.
+          - name: city
+            description: City they live in.
+          - name: country
+            description: Country they live in.
+          - name: zip
+            description: Postal code where they live.
+          - name: created
+            description: Timestamp of when the person's profile was created. 
+          - name: email
+            description: The email address and the unique identifier for a profile.
+          - name: first_name
+            description: Person's first name.
+          - name: last_name
+            description: Person's surname. 
+          - name: latitude
+            description: Latitude of the person's location. 
+          - name: longitude
+            description: Longitude of the person's location. 
+          - name: organization
+            description: Business organization they belong to. 
+          - name: phone_number
+            description: Associated phone number.
+          - name: region
+            description: Region or state they live in.
+          - name: timezone
+            description: Timezone they are situated in.
+          - name: title
+            description: Title at their business or organization.
+          - name: updated
+            description: Timestamp of when the person profile was last updated. 
+
       - name: metric
+        description: Table of tracked metrics across integrations in Klaviyo. 
+        columns:
+          - name: created
+            description: Timestamp of when the metric was created. 
+          - name: id
+            description: Unique ID of the metric being tracked. 
+          - name: integration_id
+            description: Foreign key referencing the INTEGRATION that the metric is being pulled from. 
+          - name: name
+            description: Name of the metric (same as `EVENT.type`)
+          - name: updated
+            description: Timestamp of when the metric was last updated. 
