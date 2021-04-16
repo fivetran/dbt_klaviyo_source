@@ -25,7 +25,8 @@ final as (
     select 
         _variation as variation_id,
         campaign_id,
-        coalesce(timestamp, datetime) as occurred_at,
+        timestamp as occurred_at,
+        -- don't include datetime?
         flow_id,
         flow_message_id,
         id as event_id,

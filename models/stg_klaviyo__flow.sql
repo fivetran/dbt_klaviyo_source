@@ -31,9 +31,9 @@ final as (
         {% else %}
         trigger
         {% endif %}
-        as customer_trigger,
+        as flow_trigger,
         updated as updated_at,
-        customer_filter
+        customer_filter as person_filter
 
     from fields
     where not coalesce(_fivetran_deleted, false)

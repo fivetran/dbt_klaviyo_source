@@ -22,6 +22,7 @@ sources:
           - name: _fivetran_deleted
             description: Boolean that is true if the campaign has been soft-deleted. 
           - name: campaign_type
+            description: Type of campaign.
           - name: created
             description: Timestamp of when the campaign was created, in UTC.
           - name: email_template_id
@@ -90,6 +91,8 @@ sources:
             description: Universally Unique Identifier of the event. 
           - name: property_value
             description: Numeric value associated with the event (ie the dollars associated with a purchase).
+          - name: _fivetran_deleted
+            description: Boolean that is true if the campaign has been soft-deleted. 
 
       - name: flow
         description: Table of automated, triggered flow sequences in Klaviyo. 
@@ -108,6 +111,8 @@ sources:
             description: Timestamp of when the flow was last updated. 
           - name: customer_filter
             description: JSON of flow filters placed on the **person level** that will trigger this flow. 
+          - name: _fivetran_deleted
+            description: Boolean that is true if the campaign has been soft-deleted. 
 
       - name: integration
         description: Table storing third-party platforms integrated into Klaviyo.   
@@ -118,6 +123,8 @@ sources:
             description: Unique ID of the integration. 
           - name: name
             description: Name of the integrated platform. 
+          - name: _fivetran_deleted
+            description: Boolean that is true if the campaign has been soft-deleted. 
 
       - name: person
         description: >
@@ -163,6 +170,8 @@ sources:
             description: Title at their business or organization.
           - name: updated
             description: Timestamp of when the person profile was last updated. 
+          - name: _fivetran_deleted
+            description: Boolean that is true if the campaign has been soft-deleted. 
 
       - name: metric
         description: Table of tracked metrics across integrations in Klaviyo. 
@@ -177,3 +186,5 @@ sources:
             description: Name of the metric (same as `EVENT.type`)
           - name: updated
             description: Timestamp of when the metric was last updated. 
+          - name: _fivetran_deleted
+            description: Boolean that is true if the campaign has been soft-deleted. 
