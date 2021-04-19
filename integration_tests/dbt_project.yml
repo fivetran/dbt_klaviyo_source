@@ -6,12 +6,12 @@ profile: 'integration_tests'
 
 vars:
   klaviyo_source:
-    event_table: "ref('event') }}" 
-    campaign: "ref('campaign') }}" 
-    flow: "ref('flow') }}" 
-    integration: "ref('integration') }}" 
-    person: "ref('person') }}" 
-    metric: "ref('metric') }}" 
+    event_table: "{{ ref('event') }}" 
+    campaign: "{{ ref('campaign') }}" 
+    flow: "{{ ref('flow') }}" 
+    integration: "{{ ref('integration') }}" 
+    person: "{{ ref('person') }}" 
+    metric: "{{ ref('metric') }}" 
     klaviyo__event_pass_through_columns: []
     klaviyo__person_pass_through_columns: []
 
