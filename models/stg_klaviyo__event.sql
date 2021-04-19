@@ -2,8 +2,7 @@
 with base as (
 
     select * 
-    {# from {{ ref('stg_klaviyo__event_tmp') }} #}
-    from {{ var('event_table') }}
+    from {{ ref('stg_klaviyo__event_tmp') }}
 
 ),
 
@@ -26,7 +25,7 @@ final as (
         _variation as variation_id,
         campaign_id,
         timestamp as occurred_at,
-        -- don't include datetime?
+        -- don't include datetime...
         flow_id,
         flow_message_id,
         id as event_id,
