@@ -19,7 +19,7 @@ vars:
 seeds:
   klaviyo_source_integration_tests:
     +column_types:
-      _fivetran_synced: timestamp
+      _FIVETRAN_SYNCED: timestamp
     # event_table:
     #   +column_types:
     #     datetime: timestamp
