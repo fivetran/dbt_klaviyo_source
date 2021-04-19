@@ -21,3 +21,4 @@ models:
       +materialized: view
     +materialized: table
 
+profile: klaviyo
