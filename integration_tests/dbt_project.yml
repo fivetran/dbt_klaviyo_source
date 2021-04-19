@@ -20,6 +20,9 @@ seeds:
   klaviyo_source_integration_tests:
     +column_types:
       _FIVETRAN_SYNCED: timestamp
+    person:
+      +column_types:
+        PHONE_NUMBER: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
     # event_table:
     #   +column_types:
     #     datetime: timestamp
