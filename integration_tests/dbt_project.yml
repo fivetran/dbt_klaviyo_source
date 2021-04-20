@@ -8,7 +8,7 @@ vars:
   klaviyo_source:
     event_table: "{{ ref('event') }}" 
     campaign: "{{ ref('campaign') }}" 
-    flow: "{{ ref('flow') }}" 
+    flow: "{{ fivetran_utils.snowflake_seed_data('flow') }}" 
     integration: "{{ ref('integration') }}" 
     person: "{{ ref('person') }}" 
     metric: "{{ ref('metric') }}" 
@@ -22,7 +22,11 @@ seeds:
       _FIVETRAN_SYNCED: timestamp
     person:
       +column_types:
-        PHONE_NUMBER: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
+        PHONE_NUMBER: "{{ 'string' if target.type == 'bigquery' else 'varchar' }}"
+    flow:
+      +enabled: "{{ true if target.type != 'snowflake' else false }}"
+    flow_snowflake:
+      +enabled: "{{ true if target.type == 'snowflake' else false }}"
     # event_table:
     #   +column_types:
     #     datetime: timestamp
