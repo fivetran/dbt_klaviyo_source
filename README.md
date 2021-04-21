@@ -2,11 +2,10 @@
 
 This package models Klaviyo data from [Fivetran's connector](https://fivetran.com/docs/applications/klaviyo). It uses data in the format described by [this ERD](https://fivetran.com/docs/applications/klaviyo#schemainformation).
 
-[High level objective of package]. It achieves this by:
-- [major thing the package does #1]
-- [ #2 ] 
-- [ #3]
-...
+This package enriches your Fivetran data by doing the following:
+* Adds descriptions to tables and columns that are synced using Fivetran
+* Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
+* Models staging tables, which will be used in our transform package
 
 ## Models
 
@@ -50,6 +49,18 @@ config-version: 2
 vars:
   connector:
     example_list_variable: ['the', 'list', 'of', 'values']
+```
+
+### Changing the Build Schema
+By default this package will build the Iterable staging models within a schema titled (<target_schema> + `_stg_klaviyo`) in your target database. If this is not where you would like you Klaviyo staging data to be written to, add the following configuration to your `dbt_project.yml` file:
+
+```yml
+# dbt_project.yml
+
+...
+models:
+    klaviyo_source:
+        +schema: my_new_schema_name # leave blank for just the target_schema
 ```
 
 ## Contributions
