@@ -57,7 +57,7 @@ sources:
           - name: updated
             description: Timestamp of when the campaign was last updated.
         
-      - name: event
+      - name: event #Should we add more rigid freshness tests for the event table?
         description: >
           Table of events (and metrics) triggered in Klaviyo or via its integrations.
           Custom columns can be passed through to downstream models via the `klaviyo__event_pass_through_columns` variable 

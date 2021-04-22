@@ -26,6 +26,10 @@ final as (
         id as flow_id,
         name as flow_name,
         status,
+        /*******************
+          See the `get_flow_columns` macro for additional context. Not sure what we decided was the best
+          approach for handling reserved words. Conditional within the staging model, or in the macro?
+        *******************/
         {% if target.type == 'snowflake'%}
         "TRIGGER" 
         {% else %}

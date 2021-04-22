@@ -18,6 +18,7 @@ vars:
 
 seeds:
   klaviyo_source_integration_tests:
+    +quote_columns: "{{ true if target.type == 'redshift' else false }}"
     +column_types:
       _FIVETRAN_SYNCED: timestamp
     person:
@@ -27,8 +28,4 @@ seeds:
       +enabled: "{{ true if target.type != 'snowflake' else false }}"
     flow_snowflake:
       +enabled: "{{ true if target.type == 'snowflake' else false }}"
-    # event_table:
-    #   +column_types:
-    #     datetime: timestamp
-    #     timestamp: timestamp
     
