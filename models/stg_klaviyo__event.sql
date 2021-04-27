@@ -25,7 +25,6 @@ final as (
         _variation as variation_id,
         campaign_id,
         timestamp as occurred_at,
-        -- don't include datetime...
         flow_id,
         flow_message_id,
         id as event_id,
