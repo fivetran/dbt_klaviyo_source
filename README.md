@@ -9,19 +9,19 @@ This package enriches your Fivetran data by doing the following:
 
 ## Models
 
-This package contains staging models, designed to work simultaneously with our [Klaviyo modeling package](https://github.com/fivetran/dbt_klaviyo).  The staging models:
+This package contains staging models, designed to work simultaneously with our [Klaviyo modeling package](https://github.com/fivetran/dbt_klaviyo). The staging models:
 * Remove any rows that are soft-deleted
 * Name columns consistently across all packages:
     * Boolean fields are prefixed with `is_` or `has_`
     * Timestamps are appended with `_at`
-    * ID primary keys are prefixed with the name of the table.  For example, a user table's ID column is renamed user_id.
-    * Foreign keys include the table that they refer to. For example, a project table's owner ID column is renamed owner_user_id.
-* [anything else?]
+    * ID primary keys are prefixed with the name of the table.  For example, a user table's ID column is renamed `user_id`
+    * Foreign keys include the table that they refer to. For example, a project table's owner ID column is renamed `owner_user_id`
 
 ## Installation Instructions
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 ## Configuration
+
 By default, this package looks for your Klaviyo data in the `klaviyo` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your Klaviyo data is, add the following configuration to your `dbt_project.yml` file:
 
 ```yml
@@ -36,7 +36,8 @@ vars:
 ```
 
 ### Passthrough Columns
-Additionally, this package includes all source columns defined in the macros folder. We highly recommend including custom fields in this package as models now only bring in the standard fields for the `EVENT` and `PERSON` tables. You can add more columns using our pass-through column variables. These variables allow for the pass-through fields to be aliased (`alias`) and casted (`transform_sql`) if desired, but not required. Datatype casting is configured via a sql snippet within the `transform_sql` key. You may add the desired sql while omitting the `as field_name` at the end and your custom pass-though fields will be casted accordingly. Use the below format for declaring the respective pass-through variables.
+
+Additionally, this package includes all source columns defined in the macros folder. We highly recommend including custom fields in this package as models now only bring in the standard fields for the `EVENT` and `PERSON` tables. You can add more columns using our passthrough column variables. These variables allow the passthrough fields to be aliased (`alias`) and casted (`transform_sql`) if desired, although it is not required. Datatype casting is configured via a SQL snippet within the `transform_sql` key. You may add the desired sql while omitting the `as field_name` at the end, and your custom passtrhough fields will be casted accordingly. Use the following format for declaring the respective passthrough variables:
 
 ```yml
 # dbt_project.yml
@@ -56,7 +57,8 @@ vars:
 ```
 
 ### Changing the Build Schema
-By default this package will build the Iterable staging models within a schema titled (<target_schema> + `_stg_klaviyo`) in your target database. If this is not where you would like you Klaviyo staging data to be written to, add the following configuration to your `dbt_project.yml` file:
+
+By default, this package will build the Klaviyo staging models within a schema titled (`<target_schema>` + `_stg_klaviyo`) in your target database. If this is not where you would like you Klaviyo staging data to be written to, add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
@@ -68,6 +70,7 @@ models:
 ```
 
 ## Contributions
+
 Don't see a model or specific metric you would have liked to be included? Notice any bugs when installing 
 and running the package? If so, we highly encourage and welcome contributions to this package! 
 Please create issues or open PRs against `master`. Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package.
