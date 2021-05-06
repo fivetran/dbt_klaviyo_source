@@ -25,6 +25,7 @@ final as (
         _variation as variation_id,
         campaign_id,
         timestamp as occurred_at,
+        cast( {{ dbt_utils.date_trunc('day', 'timestamp') }} as date) as occurred_on,
         flow_id,
         flow_message_id,
         id as event_id,
