@@ -24,7 +24,7 @@ rename as (
     select 
         _variation as variation_id,
         campaign_id,
-        timestamp as occurred_at,
+        cast(timestamp as {{ dbt_utils.type_timestamp() }} ) as occurred_at,
         flow_id,
         flow_message_id,
         id as event_id,
