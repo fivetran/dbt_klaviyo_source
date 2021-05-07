@@ -32,7 +32,8 @@ rename as (
         person_id,
         type,
         uuid,
-        property_value as numeric_value
+        property_value as numeric_value,
+        _fivetran_synced
 
         {{ fivetran_utils.fill_pass_through_columns('klaviyo__event_pass_through_columns') }}
     
