@@ -26,6 +26,8 @@ seeds:
         PHONE_NUMBER: "{{ 'string' if target.type in ('bigquery', 'spark') else 'varchar' }}"
     flow:
       +enabled: "{{ true if target.type != 'snowflake' else false }}"
-      +quote_columns: "{{ true if target.type in ('redshift', 'spark') else false }}"
+      +quote_columns: "{{ true if target.type == 'redshift' else false }}"
+      +column_types:
+        TRIGGER: "{{ 'string' if target.type in ('bigquery', 'spark') else 'varchar' }}"
     flow_snowflake:
       +enabled: "{{ true if target.type == 'snowflake' else false }}"
