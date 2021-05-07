@@ -19,13 +19,12 @@ fields as (
     from base
 ),
 
-final as (
+rename as (
     
     select 
         _variation as variation_id,
         campaign_id,
         timestamp as occurred_at,
-        cast( {{ dbt_utils.date_trunc('day', 'timestamp') }} as date) as occurred_on,
         flow_id,
         flow_message_id,
         id as event_id,
@@ -39,6 +38,16 @@ final as (
     
     from fields
     where not coalesce(_fivetran_deleted, false)
+),
+
+final as (
+    
+    select 
+        *,
+        cast( {{ dbt_utils.date_trunc('day', 'occurred_at') }} as date) as occurred_on
+
+    from rename
+
 )
 
 select * from final

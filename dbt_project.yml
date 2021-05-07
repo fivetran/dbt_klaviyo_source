@@ -15,6 +15,9 @@ vars:
     klaviyo__event_pass_through_columns: []
     klaviyo__person_pass_through_columns: []
 
+  dbt_utils_dispatch_list: [spark_utils, fivetran_utils]
+  fivetran_utils_dispatch_list: [spark_utils]
+  
 models: 
   klaviyo_source:
     tmp:

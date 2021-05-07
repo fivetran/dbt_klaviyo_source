@@ -4,7 +4,7 @@ version: 2
 
 sources:
   - name: klaviyo 
-    database: "{{ var ('klaviyo_database', target.database) }}"
+    database: "{% if target.type != 'spark'%}{{ var('klaviyo_database', target.database) }}{% endif %}"
     schema: "{{ var ('klaviyo_schema', 'klaviyo') }}"
 
     loader: fivetran
