@@ -77,6 +77,8 @@ models:
         description: Universally Unique Identifier of the event. 
       - name: numeric_value
         description: Numeric value associated with the event (ie the dollars associated with a purchase).
+      - name: occurred_on
+        description: Calendar date (UTC) on which the event occurred.
 
   - name: stg_klaviyo__flow
     description: Table of automated, triggered flow sequences in Klaviyo. 
