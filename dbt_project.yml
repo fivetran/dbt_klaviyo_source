@@ -23,4 +23,5 @@ models:
     tmp:
       +materialized: view
     +materialized: table
+    +schema: stg_klaviyo
 
