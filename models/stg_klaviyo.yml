@@ -141,6 +141,10 @@ models:
         description: Timestamp of when the person's profile was created. 
       - name: email
         description: The email address and the unique identifier for a profile.
+        tests:
+          - unique:
+              severity: warn
+          - not_null
       - name: full_name
         description: Person's full name.
       - name: latitude
