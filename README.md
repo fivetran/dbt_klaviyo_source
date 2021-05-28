@@ -81,7 +81,7 @@ Please create issues or open PRs against `master`. Check out [this post](https:/
 
 ## Database Support
 
-This package has been tested on BigQuery, Snowflake, Redshift, and Postgres.
+This package has been tested on BigQuery, Snowflake, Redshift, Postgres, and Databricks.
 
 ## Resources:
 - Provide [feedback](https://www.surveymonkey.com/r/DQ7K7WW) on our existing dbt packages or what you'd like to see next
