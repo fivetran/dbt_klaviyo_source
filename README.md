@@ -19,8 +19,6 @@ This package contains staging models, designed to work simultaneously with our [
     * Foreign keys include the table that they refer to. For example, a project table's owner ID column is renamed `owner_user_id`
 
 ## Installation Instructions
-`dbt_klaviyo_source` currently supports `dbt 0.20.x`.
-
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 Include in your `packages.yml`
