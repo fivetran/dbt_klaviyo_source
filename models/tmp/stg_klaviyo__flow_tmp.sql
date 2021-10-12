@@ -5,6 +5,6 @@
         schema_variable='fivetran_schema', 
         default_database=target.database,
         default_schema='fivetran',
-        default_variable='flow_source'
+        default_variable='flow'
     )
 }}
