@@ -1,1 +1,10 @@
-select * from {{ var('event_table') }}
+{{
+    fivetran_utils.union_data(
+        table_identifier='event_table', 
+        database_variable='fivetran_database', 
+        schema_variable='fivetran_schema', 
+        default_database=target.database,
+        default_schema='fivetran',
+        default_variable='event_table_source'
+    )
+}}

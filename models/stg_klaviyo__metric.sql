@@ -28,6 +28,8 @@ final as (
         name as metric_name,
         updated as updated_at
 
+      {{ fivetran_utils.source_relation() }}
+
     from fields
 
     where not coalesce(_fivetran_deleted, false)

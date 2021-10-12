@@ -3,7 +3,12 @@ version: 2
 models:
   - name: stg_klaviyo__campaign
     description: >
-      Table capturing email campaigns in Klaviyo.  
+      Table capturing email campaigns in Klaviyo.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - campaign_id
+            - source_relation
     columns:
       - name: campaign_type
         description: Type of campaign.
@@ -20,9 +25,6 @@ models:
         description: The name or label associated with the email address you're sending from.
       - name: campaign_id
         description: Unique ID of the campaign. 
-        tests:
-          - unique
-          - not_null
       - name: is_segmented
         description: Boolean that is true if the campaign is directed at a Klaviyo segment (not a list).
       - name: campaign_name
@@ -47,6 +49,11 @@ models:
       Table of events (and metrics) triggered in Klaviyo or via its integrations.
       Custom columns can be passed through to downstream models via the `klaviyo__event_pass_through_columns` variable 
       (see README for details).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - event_id
+            - source_relation
     columns:
       - name: variation_id
         description: >
@@ -64,9 +71,6 @@ models:
           This does not map onto another table.
       - name: event_id
         description: Unique ID of the event. 
-        tests:
-          - unique
-          - not_null
       - name: metric_id
         description: Foreign key referencing the metric being captured. 
       - name: person_id
@@ -81,15 +85,17 @@ models:
         description: Calendar date (UTC) on which the event occurred.
 
   - name: stg_klaviyo__flow
-    description: Table of automated, triggered flow sequences in Klaviyo. 
+    description: Table of automated, triggered flow sequences in Klaviyo.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - flow_id
+            - source_relation
     columns:
       - name: created_at
         description: Timestamp of when the flow was first created. 
       - name: flow_id
         description: Unique ID of the flow. 
-        tests:
-          - unique
-          - not_null
       - name: flow_name
         description: Name of the flow. 
       - name: status
@@ -102,15 +108,17 @@ models:
         description: JSON of flow filters placed on the **person level** that will trigger this flow. 
 
   - name: stg_klaviyo__integration
-    description: Table storing third-party platforms integrated into Klaviyo.   
+    description: Table storing third-party platforms integrated into Klaviyo.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - integration_id
+            - source_relation
     columns:
       - name: category 
         description: Use-case category of the integrated platform. 
       - name: integration_id 
         description: Unique ID of the integration. 
-        tests:
-          - unique
-          - not_null
       - name: integration_name
         description: Name of the integrated platform. 
 
@@ -119,14 +127,16 @@ models:
       Table storing the profiles of all people/users interacted with. 
       Custom columns can be passed through to downstream models via the `klaviyo__person_pass_through_columns` variable 
       (see README for details).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - person_id
+            - source_relation
     columns:
       - name: person_id
         description: >
           Unique ID of the user if you use your own unique identifier. Otherwise, Klaviyo 
           recommends using the email as the primary key. 
-        tests:
-          - unique
-          - not_null
       - name: address_1
         description: First line of the person's address.
       - name: address_2
@@ -165,15 +175,17 @@ models:
         description: Timestamp of when the person profile was last updated. 
 
   - name: stg_klaviyo__metric
-    description: Table of tracked metrics across integrations in Klaviyo. 
+    description: Table of tracked metrics across integrations in Klaviyo.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - metric_id
+            - source_relation
     columns:
       - name: created_at
         description: Timestamp of when the metric was created. 
       - name: metric_id
         description: Unique ID of the metric being tracked. 
-        tests:
-          - unique
-          - not_null
       - name: integration_id
         description: Foreign key referencing the INTEGRATION that the metric is being pulled from. 
       - name: metric_name

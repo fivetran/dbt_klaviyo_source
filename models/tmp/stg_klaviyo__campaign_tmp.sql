@@ -1,1 +1,10 @@
-select * from {{ var('campaign') }}
+{{
+    fivetran_utils.union_data(
+        table_identifier='campaign', 
+        database_variable='fivetran_database', 
+        schema_variable='fivetran_schema', 
+        default_database=target.database,
+        default_schema='fivetran',
+        default_variable='campaign_source'
+    )
+}}
