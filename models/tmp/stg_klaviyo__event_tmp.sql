@@ -1,10 +1,10 @@
 {{
     fivetran_utils.union_data(
-        table_identifier='event_table', 
+        table_identifier='event', 
         database_variable='klaviyo_database', 
         schema_variable='klaviyo_schema', 
         default_database=target.database,
         default_schema='klaviyo',
-        default_variable='event_table'
+        default_variable='event'
     )
 }}
