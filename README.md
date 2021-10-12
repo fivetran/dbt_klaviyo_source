@@ -51,7 +51,7 @@ If you have multiple Klaviyo connectors in Fivetran and would like to use this p
 ...
 config-version: 2
 vars:
-    union_schema: ['klaviyo_usa','klaviyo_canada'] # use this if the data is in different schemas/datasets of the same database/project
+    union_schemas: ['klaviyo_usa','klaviyo_canada'] # use this if the data is in different schemas/datasets of the same database/project
     union_databases: ['klaviyo_usa','klaviyo_canada'] # use this if the data is in different databases/projects but uses the same schema name
 ```
 
