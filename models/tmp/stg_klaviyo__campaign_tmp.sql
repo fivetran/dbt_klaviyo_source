@@ -1,10 +1,10 @@
 {{
     fivetran_utils.union_data(
         table_identifier='campaign', 
-        database_variable='fivetran_database', 
-        schema_variable='fivetran_schema', 
+        database_variable='klaviyo_database', 
+        schema_variable='klaviyo_schema', 
         default_database=target.database,
-        default_schema='fivetran',
+        default_schema='klaviyo',
         default_variable='campaign'
     )
 }}
