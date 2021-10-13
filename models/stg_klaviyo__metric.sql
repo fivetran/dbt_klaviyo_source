@@ -15,7 +15,7 @@ fields as (
                 staging_columns=get_metric_columns()
             )
         }}
-        
+        {{ add_dbt_source_relation() }}
     from base
 ),
 

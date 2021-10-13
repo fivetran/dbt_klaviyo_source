@@ -15,7 +15,7 @@ fields as (
                 staging_columns=get_flow_columns()
             )
         }}
-        
+        {{ add_dbt_source_relation() }}
     from base
 ),
 

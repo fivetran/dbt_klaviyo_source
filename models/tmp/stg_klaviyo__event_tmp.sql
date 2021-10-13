@@ -5,6 +5,6 @@
         schema_variable='klaviyo_schema', 
         default_database=target.database,
         default_schema='klaviyo',
-        default_variable='event'
+        default_variable='event_table'
     )
 }}
