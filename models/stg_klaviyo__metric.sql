@@ -15,7 +15,7 @@ fields as (
                 staging_columns=get_metric_columns()
             )
         }}
-        
+        {{ add_dbt_source_relation() }}
     from base
 ),
 
@@ -27,6 +27,8 @@ final as (
         integration_id,
         name as metric_name,
         updated as updated_at
+
+      {{ fivetran_utils.source_relation() }}
 
     from fields
 

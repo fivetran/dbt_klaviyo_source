@@ -15,7 +15,7 @@ fields as (
                 staging_columns=get_campaign_columns()
             )
         }}
-        
+        {{ add_dbt_source_relation() }}
     from base
 ),
 
@@ -36,6 +36,8 @@ final as (
         status_id,
         subject,
         updated as updated_at
+
+      {{ fivetran_utils.source_relation() }}
 
     from fields
 

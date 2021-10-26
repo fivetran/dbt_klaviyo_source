@@ -1,1 +1,10 @@
-select * from {{ var('campaign') }}
+{{
+    fivetran_utils.union_data(
+        table_identifier='campaign', 
+        database_variable='klaviyo_database', 
+        schema_variable='klaviyo_schema', 
+        default_database=target.database,
+        default_schema='klaviyo',
+        default_variable='campaign'
+    )
+}}
