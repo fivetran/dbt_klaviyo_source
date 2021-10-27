@@ -43,6 +43,11 @@ models:
         description: The subject line of the campaign's email. 
       - name: updated_at
         description: Timestamp of when the campaign was last updated.
+      - name: source_relation
+        description: >
+          The source where this data was pulled from. If you are making use of the `union_schemas` variable, this will be the source schema.
+          If you are making use of the `union_databases` variable, this will be the source database. If you are not unioining together multiple
+          sources, this will be an empty string.
     
   - name: stg_klaviyo__event
     description: >
@@ -83,6 +88,11 @@ models:
         description: Numeric value associated with the event (ie the dollars associated with a purchase).
       - name: occurred_on
         description: Calendar date (UTC) on which the event occurred.
+      - name: source_relation
+        description: >
+          The source where this data was pulled from. If you are making use of the `union_schemas` variable, this will be the source schema.
+          If you are making use of the `union_databases` variable, this will be the source database. If you are not unioining together multiple
+          sources, this will be an empty string.
 
   - name: stg_klaviyo__flow
     description: Table of automated, triggered flow sequences in Klaviyo.
@@ -106,6 +116,11 @@ models:
         description: Timestamp of when the flow was last updated. 
       - name: person_filter
         description: JSON of flow filters placed on the **person level** that will trigger this flow. 
+      - name: source_relation
+        description: >
+          The source where this data was pulled from. If you are making use of the `union_schemas` variable, this will be the source schema.
+          If you are making use of the `union_databases` variable, this will be the source database. If you are not unioining together multiple
+          sources, this will be an empty string.
 
   - name: stg_klaviyo__integration
     description: Table storing third-party platforms integrated into Klaviyo.
@@ -121,6 +136,11 @@ models:
         description: Unique ID of the integration. 
       - name: integration_name
         description: Name of the integrated platform. 
+      - name: source_relation
+        description: >
+          The source where this data was pulled from. If you are making use of the `union_schemas` variable, this will be the source schema.
+          If you are making use of the `union_databases` variable, this will be the source database. If you are not unioining together multiple
+          sources, this will be an empty string.
 
   - name: stg_klaviyo__person
     description: >
@@ -173,6 +193,11 @@ models:
         description: Title at their business or organization.
       - name: updated_at
         description: Timestamp of when the person profile was last updated. 
+      - name: source_relation
+        description: >
+          The source where this data was pulled from. If you are making use of the `union_schemas` variable, this will be the source schema.
+          If you are making use of the `union_databases` variable, this will be the source database. If you are not unioining together multiple
+          sources, this will be an empty string.
 
   - name: stg_klaviyo__metric
     description: Table of tracked metrics across integrations in Klaviyo.
@@ -192,3 +217,8 @@ models:
         description: Name of the metric (same as `EVENT.type`)
       - name: updated_at
         description: Timestamp of when the metric was last updated. 
+      - name: source_relation
+        description: >
+          The source where this data was pulled from. If you are making use of the `union_schemas` variable, this will be the source schema.
+          If you are making use of the `union_databases` variable, this will be the source database. If you are not unioining together multiple
+          sources, this will be an empty string.
