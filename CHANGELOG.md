@@ -11,7 +11,7 @@
 - Source Relation column: To distinguish which source each field comes from, we added a new `source_relation` column in each staging model and applied the `fivetran_utils.source_relation` macro. ([#8](https://github.com/fivetran/dbt_klaviyo_source/pull/8))
 
 ## Contributors
-- @pawelngei (https://github.com/fivetran/dbt_klaviyo_source/pull/8)
+- [@pawelngei](https://github.com/pawelngei) [#8](https://github.com/fivetran/dbt_klaviyo_source/pull/8)
 
 # dbt_klaviyo_source v0.1.0 -> v0.3.0
 Refer to the relevant release notes on the Github repository for specific details for the previous releases. Thank you!
