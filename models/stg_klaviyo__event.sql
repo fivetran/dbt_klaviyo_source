@@ -15,7 +15,7 @@ fields as (
                 staging_columns=get_event_columns()
             )
         }}
-        
+        {{ fivetran_utils.add_dbt_source_relation() }}
     from base
 ),
 
@@ -36,7 +36,8 @@ rename as (
         _fivetran_synced
 
         {{ fivetran_utils.fill_pass_through_columns('klaviyo__event_pass_through_columns') }}
-    
+        {{ fivetran_utils.source_relation() }}
+
     from fields
     where not coalesce(_fivetran_deleted, false)
 ),

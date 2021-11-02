@@ -15,7 +15,7 @@ fields as (
                 staging_columns=get_integration_columns()
             )
         }}
-        
+        {{ fivetran_utils.add_dbt_source_relation() }}
     from base
 ),
 
@@ -25,6 +25,8 @@ final as (
         category,
         id as integration_id,
         name as integration_name
+
+      {{ fivetran_utils.source_relation() }}
 
     from fields
     where not coalesce(_fivetran_deleted, false)

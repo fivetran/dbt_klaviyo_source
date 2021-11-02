@@ -15,7 +15,7 @@ fields as (
                 staging_columns=get_person_columns()
             )
         }}
-        
+        {{ fivetran_utils.add_dbt_source_relation() }}
     from base
 ),
 
@@ -42,6 +42,7 @@ final as (
         
         
         {{ fivetran_utils.fill_pass_through_columns('klaviyo__person_pass_through_columns') }}
+        {{ fivetran_utils.source_relation() }}
 
     from fields
     where not coalesce(_fivetran_deleted, false)

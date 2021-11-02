@@ -15,7 +15,7 @@ fields as (
                 staging_columns=get_flow_columns()
             )
         }}
-        
+        {{ fivetran_utils.add_dbt_source_relation() }}
     from base
 ),
 
@@ -34,6 +34,8 @@ final as (
         as flow_trigger,
         updated as updated_at,
         customer_filter as person_filter
+
+      {{ fivetran_utils.source_relation() }}
 
     from fields
     where not coalesce(_fivetran_deleted, false)
