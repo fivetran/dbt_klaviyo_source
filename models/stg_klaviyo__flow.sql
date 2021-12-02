@@ -15,7 +15,10 @@ fields as (
                 staging_columns=get_flow_columns()
             )
         }}
-        {{ fivetran_utils.add_dbt_source_relation() }}
+        {{ fivetran_utils.source_relation(
+            union_schema_variable='klaviyo_union_schemas', 
+            union_database_variable='klaviyo_union_databases') 
+        }}
     from base
 ),
 
@@ -33,9 +36,8 @@ final as (
         {% endif %}
         as flow_trigger,
         updated as updated_at,
-        customer_filter as person_filter
-
-      {{ fivetran_utils.source_relation() }}
+        customer_filter as person_filter,
+        source_relation
 
     from fields
     where not coalesce(_fivetran_deleted, false)

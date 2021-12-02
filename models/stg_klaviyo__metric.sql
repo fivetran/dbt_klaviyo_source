@@ -15,7 +15,10 @@ fields as (
                 staging_columns=get_metric_columns()
             )
         }}
-        {{ fivetran_utils.add_dbt_source_relation() }}
+        {{ fivetran_utils.source_relation(
+            union_schema_variable='klaviyo_union_schemas', 
+            union_database_variable='klaviyo_union_databases') 
+        }}
     from base
 ),
 
@@ -26,9 +29,8 @@ final as (
         id as metric_id,
         integration_id,
         name as metric_name,
-        updated as updated_at
-
-      {{ fivetran_utils.source_relation() }}
+        updated as updated_at,
+        source_relation
 
     from fields
 

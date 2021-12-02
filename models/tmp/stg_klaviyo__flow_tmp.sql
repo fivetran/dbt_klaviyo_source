@@ -5,6 +5,8 @@
         schema_variable='klaviyo_schema', 
         default_database=target.database,
         default_schema='klaviyo',
-        default_variable='flow'
+        default_variable='flow',
+        union_schema_variable='klaviyo_union_schemas',
+        union_database_variable='klaviyo_union_databases'
     )
 }}

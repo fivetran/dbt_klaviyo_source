@@ -1,3 +1,9 @@
+# dbt_klaviyo_source v0.4.0
+## Breaking Changes
+- The `union_schemas` and `union_databases` variables have been replaced with `klaviyo_union_schemas` and `klaviyo_union_databases` respectively. This allows for multiple packages with the union ability to be used and not locked to a single variable that is used across packages.
+## Under the Hood
+- Added a surrogate key within `stg_klaviyo__event` to capture unique combination of `event_id` and `source_relation` columns. This will be used in downstream incremental models configurations.
+
 # dbt_klaviyo_source v0.3.0
 
 ## Features
