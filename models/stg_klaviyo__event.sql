@@ -50,7 +50,7 @@ final as (
     select 
         *,
         cast( {{ dbt_utils.date_trunc('day', 'occurred_at') }} as date) as occurred_on,
-        {{ dbt_utils.surrogate_key(['event_id', 'source_relation']) }} as unique_event
+        {{ dbt_utils.surrogate_key(['event_id', 'source_relation']) }} as unique_event_id
 
     from rename
 
