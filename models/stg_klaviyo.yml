@@ -97,6 +97,8 @@ models:
           The source where this data was pulled from. If you are making use of the `union_schemas` variable, this will be the source schema.
           If you are making use of the `union_databases` variable, this will be the source database. If you are not unioining together multiple
           sources, this will be an empty string.
+      - name: unique_event_id
+        description: The unique identifier for the combination of event_id and source_relation columns.
 
   - name: stg_klaviyo__flow
     description: Table of automated, triggered flow sequences in Klaviyo.

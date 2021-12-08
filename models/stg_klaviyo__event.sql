@@ -15,7 +15,10 @@ fields as (
                 staging_columns=get_event_columns()
             )
         }}
-        {{ fivetran_utils.add_dbt_source_relation() }}
+        {{ fivetran_utils.source_relation(
+            union_schema_variable='klaviyo_union_schemas', 
+            union_database_variable='klaviyo_union_databases') 
+        }}
     from base
 ),
 
@@ -33,10 +36,10 @@ rename as (
         type,
         uuid,
         property_value as numeric_value,
-        _fivetran_synced
+        _fivetran_synced,
+        source_relation
 
         {{ fivetran_utils.fill_pass_through_columns('klaviyo__event_pass_through_columns') }}
-        {{ fivetran_utils.source_relation() }}
 
     from fields
     where not coalesce(_fivetran_deleted, false)
@@ -46,7 +49,8 @@ final as (
     
     select 
         *,
-        cast( {{ dbt_utils.date_trunc('day', 'occurred_at') }} as date) as occurred_on
+        cast( {{ dbt_utils.date_trunc('day', 'occurred_at') }} as date) as occurred_on,
+        {{ dbt_utils.surrogate_key(['event_id', 'source_relation']) }} as unique_event_id
 
     from rename
 
