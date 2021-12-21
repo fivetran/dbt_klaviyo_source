@@ -1,3 +1,7 @@
+# dbt_klaviyo_source v0.4.1
+## Updates
+- Updates `dbt-labs/spark_utils` package in `packages.yml` from `[">=0.2.0", "<0.3.0"]` to `[">=0.3.0", "<0.4.0"]`.
+
 # dbt_klaviyo_source v0.4.0
 🎉 dbt v1.0.0 Compatibility 🎉
 ## 🚨 Breaking Changes 🚨
