@@ -23,11 +23,11 @@ seeds:
       _FIVETRAN_SYNCED: timestamp
     person:
       +column_types:
-        PHONE_NUMBER: "{{ 'string' if target.type in ('bigquery', 'spark_utils', 'dbt_utils') else 'varchar' }}"
+        PHONE_NUMBER: "{{ 'string' if target.type in ('bigquery', 'spark', 'databricks') else 'varchar' }}"
     flow:
       +enabled: "{{ true if target.type != 'snowflake' else false }}"
       +quote_columns: "{{ true if target.type == 'redshift' else false }}"
       +column_types:
-        TRIGGER: "{{ 'string' if target.type in ('bigquery', 'spark_utils', 'dbt_utils') else 'varchar' }}"
+        TRIGGER: "{{ 'string' if target.type in ('bigquery', 'spark', 'databricks') else 'varchar' }}"
     flow_snowflake:
       +enabled: "{{ true if target.type == 'snowflake' else false }}"

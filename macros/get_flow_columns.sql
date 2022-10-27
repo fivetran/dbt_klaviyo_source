@@ -7,10 +7,15 @@
     {"name": "id", "datatype": dbt.type_string()},
     {"name": "name", "datatype": dbt.type_string()},
     {"name": "status", "datatype": dbt.type_string()},
-    {"name": "trigger", "datatype": dbt.type_string(), "quote": True},
     {"name": "updated", "datatype": dbt.type_timestamp()},
     {"name": "customer_filter", "datatype": dbt.type_string()}
 ] %}
+
+{% if target.type == 'databricks' %}
+    {{ columns.append( {"name": "trigger", "datatype": dbt.type_string(), "quote": False} ) }}
+{% else %}
+    {{ columns.append( {"name": "trigger", "datatype": dbt.type_string(), "quote": True} ) }}
+{% endif %}
 
 {{ return(columns) }}
 
