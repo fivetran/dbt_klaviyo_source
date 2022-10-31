@@ -16,6 +16,7 @@ sources:
 
     tables:
       - name: campaign
+        identifier: "{{ var('klaviyo_campaign_identifier', 'campaign') }}"
         description: >
           Table capturing email campaigns in Klaviyo.  
         columns:
@@ -58,6 +59,7 @@ sources:
             description: Timestamp of when the campaign was last updated.
         
       - name: event
+        identifier: "{{ var('klaviyo_event_identifier', 'event') }}"
         description: >
           Table of events (and metrics) triggered in Klaviyo or via its integrations.
           Custom columns can be passed through to downstream models via the `klaviyo__event_pass_through_columns` variable 
@@ -95,6 +97,7 @@ sources:
             description: Boolean that is true if the campaign has been soft-deleted. 
 
       - name: flow
+        identifier: "{{ var('klaviyo_flow_identifier', 'flow') }}"
         description: Table of automated, triggered flow sequences in Klaviyo. 
         columns:
           - name: created
@@ -115,6 +118,7 @@ sources:
             description: Boolean that is true if the campaign has been soft-deleted. 
 
       - name: integration
+        identifier: "{{ var('klaviyo_integration_identifier', 'integration') }}"
         description: Table storing third-party platforms integrated into Klaviyo.   
         columns:
           - name: category 
@@ -127,6 +131,7 @@ sources:
             description: Boolean that is true if the campaign has been soft-deleted. 
 
       - name: person
+        identifier: "{{ var('klaviyo_person_identifier', 'person') }}"
         description: >
           Table storing the profiles of all people/users interacted with. 
           Custom columns can be passed through to downstream models via the `klaviyo__person_pass_through_columns` variable 
@@ -174,6 +179,7 @@ sources:
             description: Boolean that is true if the campaign has been soft-deleted. 
 
       - name: metric
+        identifier: "{{ var('klaviyo_metric_identifier', 'metric') }}"
         description: Table of tracked metrics across integrations in Klaviyo. 
         columns:
           - name: created

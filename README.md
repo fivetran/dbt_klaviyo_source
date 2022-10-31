@@ -101,6 +101,16 @@ models:
 ```
 
 > Note that if your profile does not have permissions to create schemas in your warehouse, you can set the `+schema` to blank. The package will then write all tables to your pre-existing target schema.
+
+### Change the source table references
+If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
+> IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_klaviyo_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
+    
+```yml
+vars:
+    klaviyo_<default_source_table_name>_identifier: your_table_name
+```
+
 </details>
 
 ## (Optional) Step 5: Orchestrate your models with Fivetran Transformations for dbt Core™
