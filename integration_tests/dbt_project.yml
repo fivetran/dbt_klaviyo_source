@@ -7,7 +7,7 @@ profile: 'integration_tests'
 vars:
   klaviyo_campaign_identifier: "campaign"
   klaviyo_event_identifier: "event"
-  klaviyo_flow_identifier: "{{ fivetran_utils.snowflake_seed_data('flow') }}"
+  flow: "{{ fivetran_utils.snowflake_seed_data('flow') }}"
   klaviyo_integration_identifier: "integration"
   klaviyo_person_identifier: "person"
   klaviyo_metric_identifier: "metric"
