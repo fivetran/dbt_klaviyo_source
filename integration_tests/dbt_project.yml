@@ -13,6 +13,7 @@ vars:
   klaviyo_metric_identifier: "metric"
   klaviyo__event_pass_through_columns: []
   klaviyo__person_pass_through_columns: []
+  klaviyo_schema: 'klaviyo_source_integration_tests_1'
 
 seeds:
   klaviyo_source_integration_tests:
