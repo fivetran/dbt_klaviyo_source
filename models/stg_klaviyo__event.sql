@@ -27,7 +27,7 @@ rename as (
     select 
         _variation as variation_id,
         campaign_id,
-        cast(timestamp as {{ dbt_utils.type_timestamp() }} ) as occurred_at,
+        cast(timestamp as {{ dbt.type_timestamp() }} ) as occurred_at,
         flow_id,
         flow_message_id,
         id as event_id,
@@ -49,8 +49,8 @@ final as (
     
     select 
         *,
-        cast( {{ dbt_utils.date_trunc('day', 'occurred_at') }} as date) as occurred_on,
-        {{ dbt_utils.surrogate_key(['event_id', 'source_relation']) }} as unique_event_id
+        cast( {{ dbt.date_trunc('day', 'occurred_at') }} as date) as occurred_on,
+        {{ dbt_utils.generate_surrogate_key(['event_id', 'source_relation']) }} as unique_event_id
 
     from rename
 
