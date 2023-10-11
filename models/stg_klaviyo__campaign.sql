@@ -30,7 +30,7 @@ final as (
         email_template_id,
         from_email,
         from_name,
-        id as campaign_id,
+        cast(id as {{ dbt.type_string() }} ) as campaign_id,
         is_segmented,
         name as campaign_name,
         send_time as scheduled_to_send_at,

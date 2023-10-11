@@ -1,3 +1,8 @@
+# dbt_klaviyo_source v0.5.1
+[PR #17](https://github.com/fivetran/dbt_klaviyo_source/pull/17) includes the following updates:
+## Bug Fixes
+- Updated casting of IDs used in downstream joins or coalesce functions to prevent potential datatype errors. 
+
 # dbt_klaviyo_source v0.5.0
 
 ## 🚨 Breaking Changes 🚨:
