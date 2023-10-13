@@ -26,7 +26,7 @@ final as (
     
     select 
         category,
-        id as integration_id,
+        cast(id as {{ dbt.type_string() }} ) as integration_id,
         name as integration_name,
         source_relation
 

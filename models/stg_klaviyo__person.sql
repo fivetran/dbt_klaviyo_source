@@ -25,7 +25,7 @@ fields as (
 final as (
     
     select 
-        id as person_id,
+        cast(id as {{ dbt.type_string() }} ) as person_id,
         address_1,
         address_2,
         city,
