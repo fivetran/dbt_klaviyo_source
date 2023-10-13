@@ -1,5 +1,8 @@
-# dbt_klaviyo_source v0.5.1
-[PR #17](https://github.com/fivetran/dbt_klaviyo_source/pull/17) includes the following updates:
+# dbt_klaviyo_source v0.6.0
+[PR #17](https://github.com/fivetran/dbt_klaviyo_source/pull/17) includes the following breaking changes:
+
+## 🚨 Breaking Changes 🚨:
+- We recommend running `dbt run --full-refresh` after upgrading to this version due to changes affecting incremental models.
 ## Bug Fixes
 - IDs used in downstream joins or coalesce functions are now cast using `{{ dbt.type_string() }}` to prevent potential datatype conflicts. 
 - `_fivetran_synced` is now cast using `{{ dbt.type_timestamp() }}` to prevent downstream datatype errors.
