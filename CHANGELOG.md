@@ -2,6 +2,7 @@
 [PR #17](https://github.com/fivetran/dbt_klaviyo_source/pull/17) includes the following breaking changes:
 
 ## 🚨 Breaking Changes 🚨:
+- This change is made breaking due to impact on incremental models in the downstream transformation package. 
 ## Bug Fixes
 - IDs used in downstream joins or coalesce functions are now cast using `{{ dbt.type_string() }}` to prevent potential datatype conflicts. 
 - `_fivetran_synced` is now cast using `{{ dbt.type_timestamp() }}` to prevent downstream datatype errors.
