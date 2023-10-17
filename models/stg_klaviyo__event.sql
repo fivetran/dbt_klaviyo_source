@@ -26,17 +26,17 @@ rename as (
     
     select 
         _variation as variation_id,
-        campaign_id,
+        cast(campaign_id as {{ dbt.type_string() }} ) as campaign_id,
         cast(timestamp as {{ dbt.type_timestamp() }} ) as occurred_at,
-        flow_id,
+        cast(flow_id as {{ dbt.type_string() }} ) as flow_id,
         flow_message_id,
-        id as event_id,
-        metric_id,
-        person_id,
+        cast(id as {{ dbt.type_string() }} ) as event_id,
+        cast(metric_id as {{ dbt.type_string() }} ) as metric_id,
+        cast(person_id as {{ dbt.type_string() }} ) as person_id,
         type,
         uuid,
         property_value as numeric_value,
-        _fivetran_synced,
+        cast(_fivetran_synced as {{ dbt.type_timestamp() }} ) as _fivetran_synced,
         source_relation
 
         {{ fivetran_utils.fill_pass_through_columns('klaviyo__event_pass_through_columns') }}

@@ -38,7 +38,7 @@ Include the following klaviyo_source package version in your `packages.yml` file
 ```yaml
 packages:
   - package: fivetran/klaviyo_source
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
 ```
 ## Step 3: Define database and schema variables
 By default, this package runs using your destination and the `klaviyo` schema. If this is not where your Klaviyo data is (for example, if your Klaviyo schema is named `klaviyo_fivetran`), add the following configuration to your root `dbt_project.yml` file:

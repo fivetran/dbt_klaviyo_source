@@ -26,7 +26,7 @@ final as (
     
     select 
         created as created_at,
-        id as flow_id,
+        cast(id as {{ dbt.type_string() }} ) as flow_id,
         name as flow_name,
         status,
         {% if target.type == 'snowflake'%}

@@ -1,3 +1,16 @@
+# dbt_klaviyo_source v0.6.0
+## 🚨 Breaking Changes 🚨:
+- This change is made breaking due to impact on incremental models in the downstream transformation package. 
+## Bug Fixes
+[PR #17](https://github.com/fivetran/dbt_klaviyo_source/pull/17) includes the following breaking changes:
+- IDs used in downstream joins or coalesce functions are now cast using `{{ dbt.type_string() }}` to prevent potential datatype conflicts. 
+- `_fivetran_synced` is now cast using `{{ dbt.type_timestamp() }}` to prevent downstream datatype errors.
+
+## Under the Hood:
+[PR #16](https://github.com/fivetran/dbt_klaviyo_source/pull/16) includes the following updates:
+- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
+- Updated the pull request [templates](/.github).
+
 # dbt_klaviyo_source v0.5.0
 
 ## 🚨 Breaking Changes 🚨:

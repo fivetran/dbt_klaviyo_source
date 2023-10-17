@@ -26,8 +26,8 @@ final as (
     
     select 
         created as created_at,
-        id as metric_id,
-        integration_id,
+        cast(id as {{ dbt.type_string() }} ) as metric_id,
+        cast(integration_id as {{ dbt.type_string() }} ) as integration_id,
         name as metric_name,
         updated as updated_at,
         source_relation
