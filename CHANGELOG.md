@@ -1,3 +1,6 @@
+# dbt_klaviyo_source v0.7.0
+## 🚨 Breaking Changes 🚨:
+
 # dbt_klaviyo_source v0.6.0
 ## 🚨 Breaking Changes 🚨:
 - This change is made breaking due to impact on incremental models in the downstream transformation package. 
