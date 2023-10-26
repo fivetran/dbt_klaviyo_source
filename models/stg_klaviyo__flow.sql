@@ -30,6 +30,7 @@ final as (
         name as flow_name,
         status,
         updated as updated_at,
+        trigger_type,
         source_relation
 
     from fields
