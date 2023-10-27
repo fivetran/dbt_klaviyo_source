@@ -20,7 +20,8 @@
     {"name": "timezone", "datatype": dbt.type_string()},
     {"name": "title", "datatype": dbt.type_string()},
     {"name": "updated", "datatype": dbt.type_timestamp()},
-    {"name": "zip", "datatype": dbt.type_string()}
+    {"name": "zip", "datatype": dbt.type_string()},
+    {"name": "last_event_date", "datatype": dbt.type_timestamp()}
 ] %}
 
 {{ fivetran_utils.add_pass_through_columns(columns, var('klaviyo__person_pass_through_columns')) }}
