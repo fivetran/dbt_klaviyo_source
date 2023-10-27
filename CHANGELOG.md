@@ -1,5 +1,28 @@
 # dbt_klaviyo_source v0.7.0
+[PR #18](https://github.com/fivetran/dbt_klaviyo_source/pull/18/) includes updates regarding the [September 2023](https://fivetran.com/docs/applications/klaviyo/changelog#september2023) changes to the Klaviyo connector.
+
 ## 🚨 Breaking Changes 🚨:
+
+- We have removed these columns from the following tables:
+
+| **Table**                          | **Column**                                                                                                                                                                                                                             |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CAMPAIGN | is_segmented
+| FLOW | customer_filter
+| FLOW | trigger
+
+- We have added these columns from the following tables:
+
+| **Table**                          | **Column**                                                                                                                                                                                                                             |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CAMPAIGN | archived
+| CAMPAIGN | scheduled
+| FLOW | archived
+| FLOW | trigger_type
+| PERSON | last_event_date
+
+## Under the Hood:
+- We removed the Snowflake-specific logic in place for passing through the `trigger` field in the Flow table as it was a reserved word. Now that the `trigger` field has been deprecated, we have also removed the associated logic in the package. 
 
 # dbt_klaviyo_source v0.6.0
 ## 🚨 Breaking Changes 🚨:
