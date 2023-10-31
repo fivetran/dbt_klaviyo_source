@@ -42,7 +42,7 @@ final as (
         timezone,
         title,
         updated as updated_at,
-        last_event_date as last_event_date_at,
+        last_event_date as last_event_at,
         source_relation
         
         {{ fivetran_utils.fill_pass_through_columns('klaviyo__person_pass_through_columns') }}

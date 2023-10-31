@@ -3,7 +3,7 @@
 
 ## 🚨 Breaking Changes 🚨:
 
-- We have removed these columns from the following tables:
+- We have removed these deprecated columns from the following tables:
 
 | **Table**                          | **Column**                                                                                                                                                                                                                             |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -13,16 +13,22 @@
 
 - We have added these columns from the following tables:
 
-| **Table**                          | **Column**                                                                                                                                                                                                                             |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CAMPAIGN | archived
-| CAMPAIGN | scheduled
-| FLOW | archived
-| FLOW | trigger_type
-| PERSON | last_event_date
+| **Table**       | **Column**  | **New Name**       |
+| :---        |    :----:   |          ---: |
+| CAMPAIGN | archived | is_archived
+| CAMPAIGN | scheduled | scheduled_at
+| FLOW | archived | is_archived
+| FLOW | trigger_type | trigger_type
+| PERSON | last_event_date | last_event_at
+
+
+- In addition, we removed the `stg_klaviyo__integration` model as the `integration` table has been deprecated, and instead have passed the integration columns through `stg_klaviyo__metric`. 
+
+For more information on the fields, refer to [our docs](https://fivetran.github.io/dbt_klaviyo_source/#!/model/model.klaviyo_source).
 
 ## Under the Hood:
 - We removed the Snowflake-specific logic in place for passing through the `trigger` field in the Flow table as it was a reserved word. Now that the `trigger` field has been deprecated, we have also removed the associated logic in the package. 
+
 
 # dbt_klaviyo_source v0.6.0
 ## 🚨 Breaking Changes 🚨:
