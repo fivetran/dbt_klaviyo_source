@@ -29,7 +29,7 @@ For more information on the fields, refer to [our docs](https://fivetran.github.
 
 ## Under the Hood:
 - We removed the Snowflake-specific logic in place for passing through the `trigger` field in the Flow table as it was a reserved word. Now that the `trigger` field has been deprecated, we have also removed the associated logic in the package. 
-
+- We removed the not_null test for `email` in the `stg_klaviyo__person` model. This is because for the most recent schema, the only primary key is `person_id` rather than `email`, and `email` may not be present.
 
 # dbt_klaviyo_source v0.6.0
 ## 🚨 Breaking Changes 🚨:
