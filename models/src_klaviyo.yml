@@ -120,19 +120,6 @@ sources:
           - name: _fivetran_deleted
             description: Boolean that is true if the campaign has been soft-deleted. 
 
-      - name: integration
-        identifier: "{{ var('klaviyo_integration_identifier', 'integration') }}"
-        description: Table storing third-party platforms integrated into Klaviyo.   
-        columns:
-          - name: category 
-            description: Use-case category of the integrated platform. 
-          - name: id 
-            description: Unique ID of the integration. 
-          - name: name
-            description: Name of the integrated platform. 
-          - name: _fivetran_deleted
-            description: Boolean that is true if the campaign has been soft-deleted. 
-
       - name: person
         identifier: "{{ var('klaviyo_person_identifier', 'person') }}"
         description: >
@@ -197,5 +184,9 @@ sources:
             description: Name of the metric (same as `EVENT.type`)
           - name: updated
             description: Timestamp of when the metric was last updated. 
+          - name: integration_category 
+            description: Use-case category of the integrated platform. 
+          - name: integration_name
+            description: Name of the integrated platform. 
           - name: _fivetran_deleted
             description: Boolean that is true if the campaign has been soft-deleted. 

@@ -134,28 +134,6 @@ models:
           If you are making use of the `union_databases` variable, this will be the source database. If you are not unioining together multiple
           sources, this will be an empty string.
 
-  - name: stg_klaviyo__integration
-    description: Table storing third-party platforms integrated into Klaviyo.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - integration_id
-            - source_relation
-    columns:
-      - name: category 
-        description: Use-case category of the integrated platform. 
-      - name: integration_id 
-        description: Unique ID of the integration. 
-        tests:
-          - not_null
-      - name: integration_name
-        description: Name of the integrated platform. 
-      - name: source_relation
-        description: >
-          The source where this data was pulled from. If you are making use of the `union_schemas` variable, this will be the source schema.
-          If you are making use of the `union_databases` variable, this will be the source database. If you are not unioining together multiple
-          sources, this will be an empty string.
-
   - name: stg_klaviyo__person
     description: >
       Table storing the profiles of all people/users interacted with. 
@@ -233,6 +211,10 @@ models:
           - not_null
       - name: integration_id
         description: Foreign key referencing the INTEGRATION that the metric is being pulled from. 
+      - name: integration_category 
+        description: Use-case category of the integrated platform. 
+      - name: integration_name
+        description: Name of the integrated platform. 
       - name: metric_name
         description: Name of the metric (same as `EVENT.type`)
       - name: updated_at
