@@ -11,7 +11,7 @@
 | FLOW | customer_filter
 | FLOW | trigger
 
-- We have added these columns from the following tables:
+- We have added these columns from the following tables and renamed them:
 
 | **Table**       | **Column**  | **New Name**       |
 | :---        |    :----:   |          ---: |
