@@ -20,7 +20,8 @@
 | FLOW | archived | is_archived
 | FLOW | trigger_type | trigger_type
 | PERSON | last_event_date | last_event_at
-
+| METRIC | integration_name | integration_name
+| METRIC | integration_category | integration_category
 
 - In addition, we removed the `stg_klaviyo__integration` model as the `integration` table has been deprecated, and instead have passed the integration columns through `stg_klaviyo__metric`. 
 
