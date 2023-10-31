@@ -30,7 +30,7 @@ final as (
         name as flow_name,
         status,
         updated as updated_at,
-        archived,
+        archived as is_archived,
         trigger_type,
         source_relation
 

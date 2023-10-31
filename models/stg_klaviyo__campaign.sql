@@ -38,7 +38,7 @@ final as (
         status_id,
         subject,
         updated as updated_at,
-        archived,
+        archived as is_archived,
         scheduled as scheduled_at,
         source_relation
 
