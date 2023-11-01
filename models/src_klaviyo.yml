@@ -36,9 +36,7 @@ sources:
           - name: from_name
             description: The name or label associated with the email address you're sending from.
           - name: id
-            description: Unique ID of the campaign. 
-          - name: is_segmented
-            description: Boolean that is true if the campaign is directed at a Klaviyo segment (not a list).
+            description: Unique ID of the campaign.
           - name: name
             description: A name for this campaign. If not specified, this will default to the subject of the campaign.
           - name: send_time
@@ -54,9 +52,14 @@ sources:
           - name: status_label
             description: The label of the status as it appears in the UI (should be the same as `status`).
           - name: subject
-            description: The subject line of the campaign's email. 
+            description: The subject line of the campaign's email.
           - name: updated
             description: Timestamp of when the campaign was last updated.
+          - name: archived
+            description: Boolean of whether the campaign has been archived or not
+          - name: scheduled
+            description: The datetime when the campaign was scheduled for future sending
+
         
       - name: event
         identifier: "{{ var('klaviyo_event_identifier', 'event') }}"
@@ -108,25 +111,12 @@ sources:
             description: Name of the flow. 
           - name: status
             description: Current status of the flow. Either 'manual', 'live', or 'draft'. Read more [here](https://help.klaviyo.com/hc/en-us/articles/115002774932-Getting-Started-with-Flows#the-flow-action-status9).
-          - name: trigger
-            description: JSON of metric, segment, list, and/or date-property filters that will trigger this flow. These are applied to the **event level**.
           - name: updated
-            description: Timestamp of when the flow was last updated. 
-          - name: customer_filter
-            description: JSON of flow filters placed on the **person level** that will trigger this flow. 
-          - name: _fivetran_deleted
-            description: Boolean that is true if the campaign has been soft-deleted. 
-
-      - name: integration
-        identifier: "{{ var('klaviyo_integration_identifier', 'integration') }}"
-        description: Table storing third-party platforms integrated into Klaviyo.   
-        columns:
-          - name: category 
-            description: Use-case category of the integrated platform. 
-          - name: id 
-            description: Unique ID of the integration. 
-          - name: name
-            description: Name of the integrated platform. 
+            description: Timestamp of when the flow was last updated.
+          - name: archived
+            description: Boolean of whether this record has been archived
+          - name: trigger_type
+            description: Corresponds to the object which triggered the flow.
           - name: _fivetran_deleted
             description: Boolean that is true if the campaign has been soft-deleted. 
 
@@ -175,6 +165,8 @@ sources:
             description: Title at their business or organization.
           - name: updated
             description: Timestamp of when the person profile was last updated. 
+          - name: last_event_date
+            description: Date and time of the most recent event the triggered an update to the profile, in ISO 8601 format (YYYY-MM-DDTHH:MM:SS.mmmmmm)
           - name: _fivetran_deleted
             description: Boolean that is true if the campaign has been soft-deleted. 
 
@@ -192,5 +184,9 @@ sources:
             description: Name of the metric (same as `EVENT.type`)
           - name: updated
             description: Timestamp of when the metric was last updated. 
+          - name: integration_category 
+            description: Use-case category of the integrated platform. 
+          - name: integration_name
+            description: Name of the integrated platform. 
           - name: _fivetran_deleted
             description: Boolean that is true if the campaign has been soft-deleted. 

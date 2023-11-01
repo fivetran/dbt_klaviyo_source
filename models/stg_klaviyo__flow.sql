@@ -29,14 +29,9 @@ final as (
         cast(id as {{ dbt.type_string() }} ) as flow_id,
         name as flow_name,
         status,
-        {% if target.type == 'snowflake'%}
-        "TRIGGER" 
-        {% else %}
-        trigger
-        {% endif %}
-        as flow_trigger,
         updated as updated_at,
-        customer_filter as person_filter,
+        archived as is_archived,
+        trigger_type,
         source_relation
 
     from fields

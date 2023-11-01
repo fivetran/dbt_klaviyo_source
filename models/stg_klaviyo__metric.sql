@@ -28,6 +28,8 @@ final as (
         created as created_at,
         cast(id as {{ dbt.type_string() }} ) as metric_id,
         cast(integration_id as {{ dbt.type_string() }} ) as integration_id,
+        integration_name,
+        integration_category,
         name as metric_name,
         updated as updated_at,
         source_relation

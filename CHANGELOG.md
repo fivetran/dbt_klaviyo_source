@@ -1,3 +1,36 @@
+# dbt_klaviyo_source v0.7.0
+[PR #18](https://github.com/fivetran/dbt_klaviyo_source/pull/18/) includes updates regarding the [September 2023](https://fivetran.com/docs/applications/klaviyo/changelog#september2023) changes to the Klaviyo connector.
+
+## 🚨 Breaking Changes 🚨:
+
+- As the `integration` table has been deprecated, we removed the `stg_klaviyo__integration` model, and instead have passed the integration columns through `stg_klaviyo__metric`. 
+
+- We have removed these deprecated columns from the following tables:
+
+| **Table**                          | **Column**                                                                                                                                                                                                                             |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CAMPAIGN | is_segmented
+| FLOW | customer_filter
+| FLOW | trigger
+
+- We have added these columns from the following tables and renamed them:
+
+| **Table**       | **Column**  | **New Name**       |
+| :---        |    :----:   |          ---: |
+| CAMPAIGN | archived | is_archived
+| CAMPAIGN | scheduled | scheduled_at
+| FLOW | archived | is_archived
+| FLOW | trigger_type | trigger_type
+| PERSON | last_event_date | last_event_date
+| METRIC | integration_name | integration_name
+| METRIC | integration_category | integration_category
+
+For more information on the fields, refer to [our docs](https://fivetran.github.io/dbt_klaviyo_source/#!/model/model.klaviyo_source).
+
+## Under the Hood:
+- We removed the Snowflake-specific logic in place for passing through the `trigger` field in the Flow table as it was a reserved word. Now that the `trigger` field has been deprecated, we have also removed the associated logic in the package. 
+- We removed the not_null test for `email` in the `stg_klaviyo__person` model. This is because for the most recent schema, the only primary key is `person_id` rather than `email`, and `email` may not be present.
+
 # dbt_klaviyo_source v0.6.0
 ## 🚨 Breaking Changes 🚨:
 - This change is made breaking due to impact on incremental models in the downstream transformation package. 

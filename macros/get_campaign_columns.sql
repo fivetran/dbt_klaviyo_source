@@ -9,7 +9,6 @@
     {"name": "from_email", "datatype": dbt.type_string()},
     {"name": "from_name", "datatype": dbt.type_string()},
     {"name": "id", "datatype": dbt.type_string()},
-    {"name": "is_segmented", "datatype": "boolean"},
     {"name": "name", "datatype": dbt.type_string()},
     {"name": "send_time", "datatype": dbt.type_timestamp()},
     {"name": "sent_at", "datatype": dbt.type_timestamp()},
@@ -17,7 +16,9 @@
     {"name": "status_id", "datatype": dbt.type_string()},
     {"name": "status_label", "datatype": dbt.type_string()},
     {"name": "subject", "datatype": dbt.type_string()},
-    {"name": "updated", "datatype": dbt.type_timestamp()}
+    {"name": "updated", "datatype": dbt.type_timestamp()},
+    {"name": "archived", "datatype": "boolean" },
+    {"name": "scheduled", "datatype": dbt.type_timestamp()}
 ] %}
 
 {{ return(columns) }}
