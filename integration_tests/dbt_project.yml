@@ -7,7 +7,7 @@ profile: 'integration_tests'
 vars:
   klaviyo_campaign_identifier: "campaign"
   klaviyo_event_identifier: "event"
-  flow: "{{ fivetran_utils.snowflake_seed_data('flow') }}"
+  klaviyo_flow_identifier: "flow"
   klaviyo_integration_identifier: "integration"
   klaviyo_person_identifier: "person"
   klaviyo_metric_identifier: "metric"
@@ -30,3 +30,4 @@ seeds:
         TRIGGER: "{{ 'string' if target.type in ('bigquery', 'spark', 'databricks') else 'varchar' }}"
     flow_snowflake:
       +enabled: "{{ true if target.type == 'snowflake' else false }}"
+      +alias: flow
