@@ -19,7 +19,7 @@
 | CAMPAIGN | scheduled | scheduled_at
 | FLOW | archived | is_archived
 | FLOW | trigger_type | trigger_type
-| PERSON | last_event_date | last_event_at
+| PERSON | last_event_date | last_event_date
 | METRIC | integration_name | integration_name
 | METRIC | integration_category | integration_category
 
