@@ -13,7 +13,7 @@ vars:
   klaviyo_metric_identifier: "metric"
   klaviyo__event_pass_through_columns: []
   klaviyo__person_pass_through_columns: []
-  klaviyo_schema: klaviyo_source_integration_tests_1
+  klaviyo_schema: klaviyo_source_integration_tests_2
 
 seeds:
   klaviyo_source_integration_tests:
@@ -24,5 +24,4 @@ seeds:
       +column_types:
         PHONE_NUMBER: "{{ 'string' if target.type in ('bigquery', 'spark', 'databricks') else 'varchar' }}"
     flow:
-      +enabled: "{{ true if target.type != 'snowflake' else false }}"
       +quote_columns: "{{ true if target.type == 'redshift' else false }}"
