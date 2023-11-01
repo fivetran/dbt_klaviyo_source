@@ -3,6 +3,8 @@
 
 ## 🚨 Breaking Changes 🚨:
 
+- As the `integration` table has been deprecated, we removed the `stg_klaviyo__integration` model, and instead have passed the integration columns through `stg_klaviyo__metric`. 
+
 - We have removed these deprecated columns from the following tables:
 
 | **Table**                          | **Column**                                                                                                                                                                                                                             |
@@ -22,8 +24,6 @@
 | PERSON | last_event_date | last_event_date
 | METRIC | integration_name | integration_name
 | METRIC | integration_category | integration_category
-
-- In addition, we removed the `stg_klaviyo__integration` model as the `integration` table has been deprecated, and instead have passed the integration columns through `stg_klaviyo__metric`. 
 
 For more information on the fields, refer to [our docs](https://fivetran.github.io/dbt_klaviyo_source/#!/model/model.klaviyo_source).
 
