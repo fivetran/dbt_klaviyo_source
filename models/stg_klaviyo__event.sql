@@ -35,7 +35,7 @@ rename as (
         cast(person_id as {{ dbt.type_string() }} ) as person_id,
         type,
         uuid,
-        property_value as numeric_value,
+        cast(regexp_replace(property_value, '[^0-9.]*', '') as {{ dbt.type_float() }}) as numeric_value,
         cast(_fivetran_synced as {{ dbt.type_timestamp() }} ) as _fivetran_synced,
         source_relation
 
