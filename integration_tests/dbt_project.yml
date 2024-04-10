@@ -26,4 +26,4 @@ seeds:
       +quote_columns: "{{ true if target.type == 'redshift' else false }}"
     event:
       +column_types:
-        property_value: "{{ 'string' if target.type in ('bigquery', 'spark', 'databricks') else 'varchar' }}"
+        property_value: 'varchar'
