@@ -35,9 +35,7 @@ rename as (
         cast(person_id as {{ dbt.type_string() }} ) as person_id,
         type,
         uuid,
-        {% if target.type == 'bigquery' %}
-            regexp_replace(property_value, r'[^0-9.]*', '') as numeric_value,
-        {% elif target.type in ('snowflake', 'redshift', 'databricks') %}
+        {% if target.type in ('snowflake', 'redshift', 'databricks') %}
             regexp_replace(property_value, '[^0-9.]*', '') as numeric_value,
         {% else %}
             property_value as numeric_value
