@@ -38,7 +38,7 @@ rename as (
         {% if target.type in ('snowflake', 'redshift', 'databricks') %}
             regexp_replace(property_value, '[^0-9.]*', '') as numeric_value,
         {% else %}
-            property_value as numeric_value
+            property_value as numeric_value,
         {% endif %}
         cast(_fivetran_synced as {{ dbt.type_timestamp() }} ) as _fivetran_synced,
         source_relation
