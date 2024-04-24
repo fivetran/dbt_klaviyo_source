@@ -39,9 +39,9 @@ rename as (
         {% if target.type == 'bigquery' %}
             regexp_replace(cast(property_value as {{ dbt.type_string() }}), r'[^0-9.]*', '') as numeric_value,
         {% elif target.type == 'postgres' %}
-            regexp_replace(cast(property_value as {{ dbt.type_string() }}, '[^0-9.]*', '', 'g')::numeric as numeric_value,
+            regexp_replace(cast(property_value as {{ dbt.type_string() }}), '[^0-9.]*', '', 'g')::numeric as numeric_value,
         {% else %}
-            regexp_replace(property_value, '[^0-9.]*', '') as numeric_value,
+            regexp_replace(cast(property_value as {{ dbt.type_string() }}), '[^0-9.]*', '') as numeric_value,
         {% endif %}
         cast(_fivetran_synced as {{ dbt.type_timestamp() }} ) as _fivetran_synced,
         source_relation
