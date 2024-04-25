@@ -2,7 +2,7 @@
 [PR #22](https://github.com/fivetran/dbt_klaviyo_source/pull/22) introduces the following updates:
 
 ## Bug Fixes
-- Explicitly casting `property_value` as a string type in `stg_klaviyo__event` across all destinations to account for values that might not be initially recognized as numerics. 
+- Explicitly casting `property_value` as a numeric type in `stg_klaviyo__event` across all destinations to account for values that might not be initially recognized as numerics. 
 - Cast `property_value` in the `integration_tests/dbt_project.yml` to further ensure seed field was recognized as a string or varchar data type.
 
 ## Under the Hood
