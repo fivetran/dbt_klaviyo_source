@@ -35,16 +35,9 @@ rename as (
         cast(person_id as {{ dbt.type_string() }} ) as person_id,
         type,
         uuid,
-        {% if target.type == 'bigquery' %}
-            cast(regexp_replace(cast(property_value as {{ dbt.type_string() }}), r'[^0-9.]*', '') as {{ dbt.type_numeric() }}) as numeric_value,
-        {% elif target.type == 'postgres' %}
-            cast(regexp_replace(cast(property_value as {{ dbt.type_string() }}), '[^0-9.]*', '', 'g') as {{ dbt.type_numeric() }}) as numeric_value,
-        {% else %}
-            cast(regexp_replace(cast(property_value as {{ dbt.type_string() }}), '[^0-9.]*', '') as {{ dbt.type_numeric() }}) as numeric_value,
-        {% endif %}
+        {{ remove_string_from_numeric('property_value') }} as numeric_value,
         cast(_fivetran_synced as {{ dbt.type_timestamp() }} ) as _fivetran_synced,
         source_relation
-
         {{ fivetran_utils.fill_pass_through_columns('klaviyo__event_pass_through_columns') }}
 
     from fields

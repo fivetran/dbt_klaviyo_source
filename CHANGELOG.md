@@ -3,7 +3,11 @@
 
 ## 🪲 Bug Fixes 🪛
 - [There were errors customers were encountering](https://github.com/fivetran/dbt_klaviyo_source/issues/20) where numeric values were not being recognized in `property_value`, leading to database errors.
-- To solve for that, in `stg_klaviyo__event`, we cast `property_value` as a string, used a `regex_replace` function to retain only numerical values in these strings across all destinations (i.e. 0-9 values and .), then cast back to a numeric to ensure `numeric_value` was of that data type.
+- To solve for that, we created the `remove_string_from_numeric` macro to be used in `stg_klaviyo__event`, which conducts the following operations:
+  - We cast `property_value` as a string.
+  - We then used a `regex_replace` function to retain only numerical values in these strings across all destinations (i.e. 0-9 values and .).
+  - Finally we cast back to a numeric to ensure `numeric_value` is that particular data type.
+  
 ## 🚘 Under the Hood 🚘
 - Cast `property_value` in the `integration_tests/dbt_project.yml` to  ensure the field was originally being cast as a string or varchar data type for testing purposes.
 - Updated the `event` seed file to test for values that aren't numerics.
