@@ -1,12 +1,13 @@
 # dbt_klaviyo_source v0.7.1
 [PR #22](https://github.com/fivetran/dbt_klaviyo_source/pull/22) introduces the following updates:
 
-## Bug Fixes
-- Explicitly casting `property_value` as a numeric type in `stg_klaviyo__event` across all destinations to account for values that might not be initially recognized as numerics. 
-- Cast `property_value` in the `integration_tests/dbt_project.yml` to further ensure seed field was recognized as a string or varchar data type.
+## 🪲 Bug Fixes 🪛
+- There were cases customers were encountering where numeric values were not being recognized in `property_value`, particularly for revenue metrics. 
+- To solve for that, in `stg_klaviyo__event`, we cast `property_value` as strings, used a `regex_replace` function to retain only numerical values across all destinations (i.e. 0-9 values and .), then provided additional numerical casting for insurance. 
+- Cast `property_value` in the `integration_tests/dbt_project.yml` to `string` or `varchar` to ensure seed field was recognized as a string or varchar data type.
 
-## Under the Hood
-- Updated the `event` seed file to properly test for these configuration case.
+## 🚘 Under the Hood 🚘
+- Updated the `event` seed file to test for values that aren't numerics.
 - Updated the pull request template. 
 
 ## Contributors
