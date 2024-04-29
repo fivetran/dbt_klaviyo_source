@@ -35,10 +35,9 @@ rename as (
         cast(person_id as {{ dbt.type_string() }} ) as person_id,
         type,
         uuid,
-        property_value as numeric_value,
+        {{ klaviyo_source.remove_string_from_numeric('property_value') }} as numeric_value,
         cast(_fivetran_synced as {{ dbt.type_timestamp() }} ) as _fivetran_synced,
         source_relation
-
         {{ fivetran_utils.fill_pass_through_columns('klaviyo__event_pass_through_columns') }}
 
     from fields
