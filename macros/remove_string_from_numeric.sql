@@ -22,4 +22,9 @@
 
 {% endmacro %}
 
+{% macro redshift__remove_string_from_numeric(column_name) %}
+    
+    cast(regexp_replace(cast({{ column_name }} as {{ dbt.type_string() }}), '[^0-9.]*', '') as {{ dbt.type_numeric() }})
+
+{% endmacro %}
 
