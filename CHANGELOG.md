@@ -11,7 +11,8 @@
 ## 🚘 Under the Hood 🚘
 - Cast `property_value` in the `integration_tests/dbt_project.yml` to  ensure the field was originally being cast as a string or varchar data type for testing purposes.
 - Updated the `event` seed file to test for values that aren't numerics.
-- Updated the pull request template. 
+- Updated the pull request template.
+- Included auto-releaser GitHub Actions workflow to automate future releases.
 
 ## Contributors
 - [@vnguyen12](https://github.com/vnguyen12) [#21](https://github.com/fivetran/dbt_klaviyo_source/pull/21)
