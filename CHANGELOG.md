@@ -1,3 +1,8 @@
+# dbt_klaviyo_source version.version
+
+## Documentation
+- Corrected references to connectors and connections in the README. ([#26](https://github.com/fivetran/dbt_klaviyo_source/pull/26))
+
 # dbt_klaviyo_source v0.7.1
 [PR #22](https://github.com/fivetran/dbt_klaviyo_source/pull/22) introduces the following updates:
 
