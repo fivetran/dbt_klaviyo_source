@@ -15,6 +15,7 @@
 - Materializes [Klaviyo staging tables](https://fivetran.github.io/dbt_klaviyo_source/#!/overview/klaviyo_source/models/?g_v=1&g_e=seeds) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/klaviyo#schemainformation). These staging tables clean, test, and prepare your Klaviyo data from [Fivetran's connector](https://fivetran.com/docs/applications/klaviyo) for analysis by doing the following:
   - Names columns for consistency across all packages and for easier analysis
   - Adds freshness tests to source data
+    - dbt Core >= 1.9.6 is required to run freshness tests out of the box.
   - Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
 - Generates a comprehensive data dictionary of your klaviyo data through the [dbt docs site](https://fivetran.github.io/dbt_klaviyo_source/).
 - These tables are designed to work simultaneously with our [Klaviyo transformation package](https://github.com/fivetran/dbt_klaviyo).
@@ -38,7 +39,7 @@ Include the following klaviyo_source package version in your `packages.yml` file
 ```yaml
 packages:
   - package: fivetran/klaviyo_source
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.8.0", "<0.9.0"]
 ```
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `klaviyo` schema. If this is not where your Klaviyo data is (for example, if your Klaviyo schema is named `klaviyo_fivetran`), add the following configuration to your root `dbt_project.yml` file:

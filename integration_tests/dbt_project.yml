@@ -1,5 +1,5 @@
 name: 'klaviyo_source_integration_tests'
-version: '0.7.1'
+version: '0.8.0'
 config-version: 2
 profile: 'integration_tests'
 
@@ -31,3 +31,6 @@ seeds:
     event:
       +column_types:
         PROPERTY_VALUE: "{{ 'string' if target.type in ('bigquery', 'spark', 'databricks') else 'varchar' }}"
+
+flags:
+  send_anonymous_usage_stats: False
